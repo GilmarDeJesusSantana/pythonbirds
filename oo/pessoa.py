@@ -1,6 +1,13 @@
 class Pessoa:
 
     olhos = 2 #'Este é um atributo de classe.'
+    @staticmethod
+    def metodo_statico():
+        return 42
+    @classmethod
+    def nome_e_atributo_de_classe(cls):
+        return  f'{cls} - olhos {cls.olhos}'
+
     '''Este método é execultado toda vez que um novo objeto é instanciado.
         Para que se possa atribuir valores aos atributos no momento que as instancias
         são criados devesse criar parametros conforme abaixo.'''
@@ -32,3 +39,6 @@ if __name__ == '__main__':
     print(luciano.olhos)
     print(luciano.__dict__)
     print(gilmar.__dict__)
+    print(Pessoa.metodo_statico(),luciano.metodo_statico())
+    print()
+    print(Pessoa.nome_e_atributo_de_classe(),luciano.nome_e_atributo_de_classe())
