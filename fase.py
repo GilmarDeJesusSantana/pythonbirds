@@ -2,7 +2,6 @@
 from itertools import chain
 from atores import ATIVO
 
-
 VITORIA = 'VITORIA'
 DERROTA = 'DERROTA'
 EM_ANDAMENTO = 'EM_ANDAMENTO'
@@ -28,7 +27,6 @@ class Fase():
     def __init__(self, intervalo_de_colisao=1):
         """
         Método que inicializa uma fase.
-
         :param intervalo_de_colisao:
         """
         self.intervalo_de_colisao = intervalo_de_colisao
@@ -36,14 +34,13 @@ class Fase():
         self._porcos = []
         self._obstaculos = []
 
-
     def adicionar_obstaculo(self, *obstaculos):
         """
         Adiciona obstáculos em uma fase
 
         :param obstaculos:
         """
-        self._passaros.extend(obstaculos)
+        self._obstaculos.extend(obstaculos)
 
     def adicionar_porco(self, *porcos):
         """
@@ -96,7 +93,6 @@ class Fase():
                 passaro.lancar(angulo, tempo)
                 break
 
-
     def calcular_pontos(self, tempo):
         """
         Lógica que retorna os pontos a serem exibidos na tela.
@@ -111,7 +107,7 @@ class Fase():
             for alvo in self._obstaculos + self._porcos:
                 passaro.colidir(alvo, self.intervalo_de_colisao)
             passaro.colidir_com_chao()
-        pontos=[self._transformar_em_ponto(a) for a in self._passaros+self._obstaculos+self._porcos]
+        pontos = [self._transformar_em_ponto(a) for a in self._passaros + self._obstaculos + self._porcos]
 
         return pontos
 
@@ -129,5 +125,3 @@ class Fase():
             if passaro.status == ATIVO:
                 return True
         return False
-
-
